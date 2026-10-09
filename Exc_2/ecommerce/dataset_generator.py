@@ -13,6 +13,7 @@ random.seed(SEED)
 # -------------------------
 # CUSTOMER NAMES
 # -------------------------
+# 32
 FIRST_NAMES = [
     "Alice","Bob","Carol","David","Eve","Frank","Grace","Henry",
     "Ivy","John","Liam","Mia","Noah","Olivia","Emma","Sophia",
@@ -20,6 +21,7 @@ FIRST_NAMES = [
     "Leo","Maya","Ethan","Lara","Victor","Zoe","Anna","Daniel","Julia"
 ]
 
+#33
 LAST_NAMES = [
     "Smith","Johnson","Williams","Brown","Jones","Miller","Davis",
     "Garcia","Rodriguez","Martinez","Hernandez","Lopez","Gonzalez",
