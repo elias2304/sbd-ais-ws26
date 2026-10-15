@@ -1,6 +1,9 @@
 package repository
 
-import "ordersystem/model"
+import (
+	"ordersystem/model"
+	"time"
+)
 
 type DatabaseHandler struct {
 	// drinks represent all available drinks
@@ -9,12 +12,58 @@ type DatabaseHandler struct {
 	orders []model.Order
 }
 
-// todo
+type Drink struct {
+	Description string
+	Name        string
+	Price       float64
+}
+
 func NewDatabaseHandler() *DatabaseHandler {
 	// Init the drinks slice with some test data
 	// drinks := ...
-
+	drinks := []model.Drink{
+		{
+			ID:          1,
+			Description: "tasty beer",
+			Name:        "Beer",
+			Price:       3.5,
+		},
+		{
+			ID:          2,
+			Description: "Red Wine from the Burgenland",
+			Name:        "Wine",
+			Price:       4.0,
+		},
+		{
+			ID:          3,
+			Description: "Teste",
+			Name:        "Cocktail",
+			Price:       3.5,
+		},
+	}
 	// Init orders slice with some test data
+	orders := []model.Order{
+		{
+			DrinkID:   1,
+			Amount:    10,
+			CreatedAt: time.Now(),
+		},
+		{
+			DrinkID:   2,
+			Amount:    3,
+			CreatedAt: time.Now(),
+		},
+		{
+			DrinkID:   3,
+			Amount:    4,
+			CreatedAt: time.Now(),
+		},
+		{
+			DrinkID:   2,
+			Amount:    5,
+			CreatedAt: time.Now(),
+		},
+	}
 
 	return &DatabaseHandler{
 		drinks: drinks,
@@ -30,15 +79,15 @@ func (db *DatabaseHandler) GetOrders() []model.Order {
 	return db.orders
 }
 
-// todo
 func (db *DatabaseHandler) GetTotalledOrders() map[uint64]uint64 {
-	// calculate total orders
-	// key = DrinkID, value = Amount of orders
-	// totalledOrders map[uint64]uint64
-	return totalledOrders
+	totalOrders := make(map[uint64]uint64)
+
+	for _, order := range db.orders {
+		totalOrders[order.DrinkID] += order.Amount
+	}
+	return totalOrders
 }
 
 func (db *DatabaseHandler) AddOrder(order *model.Order) {
-	// todo
-	// add order to db.orders slice
+	db.orders = append(db.orders, *order)
 }
