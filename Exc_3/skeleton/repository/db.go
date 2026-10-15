@@ -12,12 +12,6 @@ type DatabaseHandler struct {
 	orders []model.Order
 }
 
-type Drink struct {
-	Description string
-	Name        string
-	Price       float64
-}
-
 func NewDatabaseHandler() *DatabaseHandler {
 	// Init the drinks slice with some test data
 	// drinks := ...
@@ -51,17 +45,17 @@ func NewDatabaseHandler() *DatabaseHandler {
 		{
 			DrinkID:   2,
 			Amount:    3,
-			CreatedAt: time.Now(),
+			CreatedAt: time.Now().Add(-24 * time.Hour),
 		},
 		{
 			DrinkID:   3,
 			Amount:    4,
-			CreatedAt: time.Now(),
+			CreatedAt: time.Now().Add(-48 * time.Hour),
 		},
 		{
 			DrinkID:   2,
 			Amount:    5,
-			CreatedAt: time.Now(),
+			CreatedAt: time.Now().Add(-72 * time.Hour),
 		},
 	}
 
