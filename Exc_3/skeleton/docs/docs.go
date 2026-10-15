@@ -94,9 +94,9 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/order/total": {
+        "/api/order/totalled": {
             "get": {
-                "description": "Returns all Orders",
+                "description": "Returns total orders per drink",
                 "produces": [
                     "application/json"
                 ],

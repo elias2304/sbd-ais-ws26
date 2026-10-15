@@ -45,10 +45,10 @@ func GetOrders(db *repository.DatabaseHandler) http.HandlerFunc {
 
 // GetOrdersTotal	godoc
 // @tags 			Menu
-// @Description 	Returns all Orders
+// @Description 	Returns total orders per drink
 // @Produce  		json
 // @Success 		200 {object} map[uint64]uint64
-// @Router 			/api/order/total [get]
+// @Router 			/api/order/totalled [get]
 func GetOrdersTotal(db *repository.DatabaseHandler) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		ordersTotal := db.GetTotalledOrders()
@@ -75,6 +75,7 @@ func PostOrder(db *repository.DatabaseHandler) http.HandlerFunc {
 		if err != nil {
 			render.Status(r, http.StatusBadRequest)
 			render.JSON(w, r, "Error")
+			return
 		}
 
 		db.AddOrder(order)
