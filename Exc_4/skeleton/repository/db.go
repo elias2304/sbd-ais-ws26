@@ -6,6 +6,7 @@ import (
 	"log/slog"
 	"ordersystem/model"
 	"os"
+	"time"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -80,9 +81,53 @@ func prepopulate(dbConn *gorm.DB) error {
 		return nil
 	}
 	// create drink menu
-	// todo create drinks
-	// todo create orders
-	// GORM documentation can be found here: https://gorm.io/docs/index.html
+	drinks := []model.Drink{
+		{
+			Name:        "Beer",
+			Price:       3.5,
+			Description: "tasty beer",
+		},
+		{
+			Name:        "Wine",
+			Price:       4.0,
+			Description: "Red Wine from the Burgenland",
+		},
+		{
+			Name:        "Cocktail",
+			Price:       3.5,
+			Description: "Teste",
+		},
+	}
+	if err := dbConn.Create(&drinks).Error; err != nil {
+		return err
+	}
+
+	// create orders
+	orders := []model.Order{
+		{
+			DrinkID:   drinks[0].ID,
+			Amount:    10,
+			CreatedAt: time.Now(),
+		},
+		{
+			DrinkID:   drinks[1].ID,
+			Amount:    3,
+			CreatedAt: time.Now().Add(-24 * time.Hour),
+		},
+		{
+			DrinkID:   drinks[2].ID,
+			Amount:    4,
+			CreatedAt: time.Now().Add(-48 * time.Hour),
+		},
+		{
+			DrinkID:   drinks[1].ID,
+			Amount:    5,
+			CreatedAt: time.Now().Add(-72 * time.Hour),
+		},
+	}
+	if err := dbConn.Create(&orders).Error; err != nil {
+		return err
+	}
 
 	return nil
 }

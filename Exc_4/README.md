@@ -8,11 +8,11 @@ We are also going to add a PostgreSQL database to this project.
 The database shall be started as a docker container.
 
 ## Todo
-- [ ] Start a PostgreSQL docker container (`postgres:18`) using plain docker commands
+- [X] Start a PostgreSQL docker container (`postgres:18`) using plain docker commands
     - Use environment variables in db
     - Map the PostgreSQL storage (`/var/lib/postgresql/18/docker`) to a Docker volume to make it persistent
     - Connect a database viewer to the db ([GoLand](https://www.jetbrains.com/help/go/quick-start-with-database-functionality.html), [VSCode](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql), [DBeaver](https://dbeaver.io/))
-- [ ] Prepopulate database in code
+- [X] Prepopulate database in code
 - [ ] Create multi-stage Dockerfile
     - First stage (`builder`) should compile the application
         - Use `golang:1.27` as base image for the `builder` stage
