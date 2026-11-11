@@ -20,9 +20,9 @@ The database shall be started as a docker container.
         - The `script/build-application.sh` creates a binary located at `/app/ordersystem`
       - Second stage should copy the compiled binary from `builder` and start the application on container run
           - Use `alpine` as base image for the `run` stage
-- [ ] Build & run Orderservice container
+- [X] Build & run Orderservice container
   - Use environment variables in oderservice
-- [ ] Create scripts containing all commands you needed to build and run the orderservice as container and start the database.
+- [X] Create scripts containing all commands you needed to build and run the orderservice as container and start the database.
 
 Environment variables:
 
