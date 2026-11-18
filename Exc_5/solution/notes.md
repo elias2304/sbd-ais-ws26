@@ -27,7 +27,7 @@
 
 ---
 
-## Stage B — Decide
+## Stage B - Decide
 
 ### Options vs. Requirements (R1-R4)
 
